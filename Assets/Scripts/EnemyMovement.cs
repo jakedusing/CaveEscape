@@ -5,8 +5,14 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 1f;
+    [SerializeField] GameObject enemyProjectile;
+    [SerializeField] Transform enemyProjectileSpawn;
     Rigidbody2D myRigidbody;
     BoxCollider2D myCollider;
+
+    private float _fireRate = 3f;
+    private float _canFire = -1;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -29,4 +35,6 @@ public class EnemyMovement : MonoBehaviour
     void FlipEnemyFacing() {
         transform.localScale = new Vector2(-(Mathf.Sign(myRigidbody.velocity.x)), 1f);
     }
+
+    
 }

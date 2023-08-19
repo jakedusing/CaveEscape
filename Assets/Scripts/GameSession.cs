@@ -9,6 +9,7 @@ public class GameSession : MonoBehaviour
 
     [SerializeField] int playerLives = 3;
     [SerializeField] int score = 0;
+    [SerializeField] int bonusInterval = 1000;
 
     [SerializeField] TextMeshProUGUI livesText;
     [SerializeField] TextMeshProUGUI scoreText;
@@ -37,6 +38,11 @@ public class GameSession : MonoBehaviour
 
     public void AddToScore(int pointsToAdd) {
         score += pointsToAdd;
+        if (score >= bonusInterval) {
+            playerLives += 1;
+            bonusInterval += bonusInterval;
+            livesText.text = playerLives.ToString();
+        }    
         scoreText.text = score.ToString();
     }
 
